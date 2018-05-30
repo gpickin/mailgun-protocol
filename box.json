@@ -1,0 +1,54 @@
+{
+    "name":"MailgunProtocol",
+    "version":"1.0.1",
+    "author":"Gavin Pickin <gpickin@gmail.com>",
+    "location":"gpickin/mailgun-protocol#v1.2.1",
+    "homepage":"https://github.com/gpickin/mailgun-protocol",
+    "documentation":"https://github.com/gpickin/mailgun-protocol",
+    "repository":{
+        "type":"git",
+        "URL":"https://github.com/gpickin/mailgun-protocol"
+    },
+    "bugs":"https://github.com/gpickin/mailgun-protocol/issues",
+    "slug":"mailgun-protocol",
+    "shortDescription":"A cbmailservices protocol for Mailgun",
+    "description":"A cbmailservices protocol for Mailgun",
+    "type":"modules",
+    "keywords":[
+        "mail",
+        "mailgun",
+        "cbmailservices"
+    ],
+    "private":false,
+    "license":[
+        {
+            "type":"MIT",
+            "URL":"https://github.com/gpickin/mailgun-protocol"
+        }
+    ],
+    "contributors":[
+        "Gavin Pickin <gpickin@gmail.com>"
+    ],
+    "dependencies":{
+        "mailguncfc":"^0.5.0",
+        "cbmailservices":"^1.2.0+00028"
+    },
+    "devDependencies":{
+        "testbox":"^2.3.0+00044"
+    },
+    "installPaths":{
+        "testbox":"testbox",
+        "cbmailservices":"modules/cbmailservices",
+        "mailguncfc":"modules/mailguncfc"
+    },
+    "scripts":{
+        "postVersion":"package set location='gpickin/mailgun-protocol#v`package version`'",
+        "onRelease":"publish",
+        "postPublish":"!git push && !git push --tags"
+    },
+    "ignore":[
+        "**/.*",
+        "test",
+        "tests"
+    ]
+}
