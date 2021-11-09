@@ -8,6 +8,7 @@ component extends="cbmailservices.models.AbstractProtocol" {
     * @properties A map of configuration properties for the protocol
     */
     public MailgunProtocol function init( struct properties = {} ) {
+        variables.name = "Mailgun";
         super.init( argumentCollection = arguments );
         return this;
     }
