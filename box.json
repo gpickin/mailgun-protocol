@@ -44,7 +44,7 @@
     "scripts":{
         "postVersion":"package set location='gpickin/mailgun-protocol#v`package version`'",
         "onRelease":"publish",
-        "postPublish":"!git push && !git push --tags"
+        "postPublish":"!git push && git push --tags"
     },
     "ignore":[
         "**/.*",
