@@ -40,6 +40,9 @@ component extends="cbmailservices.models.AbstractProtocol" {
             tags = mail.additionalInfo.categories;
         }
         
+        var h_options = {};
+        if(mail.keyExists('replyto')) h_options['Reply-To'] = mail.replyto;
+        
         var sendResult = mailgun.sendMessage( 
             from        =   mail.from, 
             to          =   mail.to, 
@@ -55,8 +58,8 @@ component extends="cbmailservices.models.AbstractProtocol" {
                 "tracking"  =   "yes",
                 "tracking-clicks" = "yes",
                 "tracking-opens"  = "yes"
-            }
-            //struct h = { }, 
+            },
+            h = h_options
             //struct v = { }, 
             //any recipient_variables 
         );
