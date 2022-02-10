@@ -2,7 +2,7 @@
     "name":"MailgunProtocol",
     "version":"1.1.1",
     "author":"Gavin Pickin <gpickin@gmail.com>",
-    "location":"gpickin/mailgun-protocol#v1.1.0",
+    "location":"gpickin/mailgun-protocol#v1.1.1",
     "homepage":"https://github.com/gpickin/mailgun-protocol",
     "documentation":"https://github.com/gpickin/mailgun-protocol",
     "repository":{
