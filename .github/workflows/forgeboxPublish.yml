@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: Ortus-Solutions/commandbox-action@v1
+      - uses: Ortus-Solutions/commandbox-action@v1.0.2
         env:
           box_config_endpoints_forgebox_APIToken: ${{ secrets.FORGEBOX_TOKEN }}
         with:
