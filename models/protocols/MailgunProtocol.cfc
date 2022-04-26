@@ -19,7 +19,7 @@ component extends="cbmailservices.models.AbstractProtocol" {
     * @payload The payload to deliver
     */
     public function send( required cbmailservices.models.Mail payload ) {
-        var rtnStruct   =   {error=true, errorArray=[]};
+        var rtnStruct   =   {error=true, messages=[], messageID=''};
         var mail        =   payload.getMemento();
         var type        =   structKeyExists( mail, "type" ) ? mail.type : "plain";
 
