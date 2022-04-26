@@ -30,8 +30,8 @@
         "Gavin Pickin <gpickin@gmail.com>"
     ],
     "dependencies":{
-        "mailguncfc":"^0.5.0",
-        "cbmailservices":"^1.2.0+00028"
+        "mailguncfc":"^0.6.0",
+        "cbmailservices":"^2.0.0"
     },
     "devDependencies":{
         "testbox":"^2.3.0+00044"
@@ -42,7 +42,7 @@
         "mailguncfc":"modules/mailguncfc"
     },
     "scripts":{
-        
+
     },
     "ignore":[
         "**/.*",
