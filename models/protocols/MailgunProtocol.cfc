@@ -63,13 +63,6 @@ component extends="cbmailservices.models.AbstractProtocol" {
             //struct v = { }, 
             //any recipient_variables 
         );
-        
-        // if ( left( cfhttp.status_code, 1 ) != "2" && left( cfhttp.status_code, 1 ) != "3"  ) {
-        //     rtnStruct.errorArray = deserializeJSON( cfhttp.filecontent ).errors;
-        // }
-        // else {
-        //     rtnStruct.error = false;
-        // }
 
         return rtnStruct;
     }
