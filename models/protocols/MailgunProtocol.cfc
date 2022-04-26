@@ -39,30 +39,50 @@ component extends="cbmailservices.models.AbstractProtocol" {
             }
             tags = mail.additionalInfo.categories;
         }
-        
+
         var h_options = {};
         if(mail.keyExists('replyto')) h_options['Reply-To'] = mail.replyto;
-        
-        var sendResult = mailgun.sendMessage( 
-            from        =   mail.from, 
-            to          =   mail.to, 
-            //cc          =   mail.cc,
-            //bcc         =   mail.bcc,
-            subject     =   mail.subject,
-            text        =   text, 
-            html        =   html, 
-            //any attachment, 
-            //any inline, 
-            o = { 
-                "tag"       =   tags,
-                "tracking"  =   "yes",
-                "tracking-clicks" = "yes",
-                "tracking-opens"  = "yes"
-            },
-            h = h_options
-            //struct v = { }, 
-            //any recipient_variables 
-        );
+
+        try {
+            var sendResult = mailgun.sendMessage(
+                from        =   mail.from,
+                to          =   mail.to,
+                //cc          =   mail.cc,
+                //bcc         =   mail.bcc,
+                subject     =   mail.subject,
+                text        =   text,
+                html        =   html,
+                //any attachment,
+                //any inline,
+                o = {
+                    "tag"       =   tags,
+                    "tracking"  =   "yes",
+                    "tracking-clicks" = "yes",
+                    "tracking-opens"  = "yes"
+                },
+                h = h_options
+                //struct v = { },
+                //any recipient_variables
+            );
+        } catch( any e ) {
+            rtnStruct.messages = [
+                "Error sending mail. #e.message# : #e.detail# : #e.stackTrace#",
+                "Error type: #e.type#",
+                "Error message: #e.message#",
+                "Error detail: #e.detail#",
+                "Error stackTrace: #e.stackTrace#"
+            ];
+
+            return rtnStruct;
+        }
+
+        rtnStruct.error = false;
+        rtnStruct.messageID = sendResult.id;
+        rtnStruct.messages = [
+            sendResult.message,
+            sendResult.status_code,
+            sendResult.status_text
+        ];
 
         return rtnStruct;
     }
