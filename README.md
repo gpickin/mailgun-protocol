@@ -7,63 +7,38 @@
 
 ### Configuration
 
-You can configure Mailgun as your protocol inside your `mailsettings` in your `config/ColdBox.cfc`.  It is recommended you store your API key outside version control in either server ENV settings or Java properties.  This approach also lets you easily swap out dev and production keys based on the environment.
+You can configure Mailgun as your protocol inside the `moduleSettings` for `cbmailServices` located in your `config/ColdBox.cfc`.
 
 ```
-mailsettings = {
-	protocol = {
-		class = "mailgunprotocol.models.protocols.mailgunProtocol",
-		properties = {
+moduleSettings = {
+	cbmailServices = {
+		defaultProtocol = "mailgun",
+		mailers = {
+			mailgun = {
+				class = "mailgunprotocol.models.protocols.mailgunProtocol"
+			}
 		}
 	}
 };
 ```
 
-#### Dependency 
+#### Dependency
 
 Relies on the [`MailGunCFC Module`](https://www.forgebox.io/view/mailguncfc) by Matthew Clemente.
 
-To use the wrapper as a ColdBox Module you will need to pass the configuration settings in from your config/Coldbox.cfc. This is done within the moduleSettings struct:
+To use the wrapper as a ColdBox Module you will need to pass the configuration settings in from your config/Coldbox.cfc. It is recommended you store your API key outside version control in either server ENV settings or Java properties.  This approach also lets you easily swap out dev and production keys based on the environment. This is done within the moduleSettings struct:
 
-```moduleSettings = {
-  mailguncfc = {
-    secretApiKey  = 'key-xxx',
-    publicApiKey  = 'pubkey-xxx',
-    domain        = 'yourdomain.com'
-  }
+```
+moduleSettings = {
+	mailguncfc = {
+		secretApiKey  = 'abc',
+		publicApiKey  = 'pubkey-xxx',
+		domain        = 'example.com'
+	}
 };
 ```
 
-You can then leverage the CFC via the injection DSL: mailgun@mailguncfc:
-
-``` 
-property name="mailgun" inject="mailgun@mailguncfc";
-```
-
-
-### Emails
-
-To send an email, set the `type` to `plain` or 'html':
-```
-var mail = mailService.newMail(
-    to = user.getEmail(),
-    subject = "Welcome to my site!",
-    type = "html"
-);
-```
-
-The body of the email is what will be sent. 
-You can send plain text:
-
-```
-mail.setBody( "My plain text email here.  I can still use @placeholders@, of course." );
-```
-
-or you can send html
-
-```
-mail.setBody( "<p>My html email here.  I can still use @placeholders@, of course.</p>" );
-```
+See the [cbMailService](https://coldbox-mailservices.ortusbooks.com/essentials/sending-mail) documentation for details on how to use the service to send email via Mailgun.
 
 ### Categories
 
